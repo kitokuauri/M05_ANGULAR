@@ -1,0 +1,27 @@
+<div>
+    <h2>Lista de Mensajes:</h2>
+    <p><a routerLink="/dashboard">Volver.</a></p>
+    <div *ngFor="let mensaje of mensajes">
+        <p>De: {{ mensaje.remitente }} - Para: {{ mensaje.destinatario }}.</p>
+        <p>Mensaje: {{ mensaje.mensaje }}.</p>
+        <p>{{ mensaje.fecha }}</p>
+        <hr>
+    </div>
+
+    <button (click)="convertirMensajesAJson()">Convertir a Json</button>
+    <div *ngIf="mostrarConvertidosAJson">
+        <button (click)="ocultarConvertidos()">Ocultar</button>
+        <p>{{ mensJson }}</p>
+        <button (click)="convertirDesdeJson()">Convertir desde Json</button><br>
+        <button (click)="ocultarConvertidosDesdeJson()">Ocultar</button>
+        <div *ngIf="mostrarConvertidosDesdeJson">
+            <div *ngFor="let mensaje of mensajes">
+                <p>De: {{ mensaje.remitente }} - Para: {{ mensaje.destinatario }}.</p>
+                <p>Mensaje: {{ mensaje.mensaje }}.</p>
+                <p>{{ mensaje.fecha }}</p><br>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+

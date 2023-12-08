@@ -1,0 +1,26 @@
+<div>
+    <h2>Lista de Transferencias:</h2>
+    <p><a routerLink="/dashboard">Volver.</a></p>
+    <div *ngFor="let transferencia of transferencias">
+        <p>De: {{ transferencia.remitente }} - Para: {{ transferencia.destinatario }}.</p>
+        <p>Cantidad: {{ transferencia.cantidad }}€.</p>
+        <p>{{ transferencia.fecha }}</p>
+        <hr>
+    </div>
+
+    <button (click)="convertirTransAJson()">Convertir a Json</button>
+    <div *ngIf="mostrarConvertidosAJson">
+        <button (click)="ocultarConvertidos()">Ocultar</button>
+        <p>{{ transJson }}</p>
+        <button (click)="convertirDesdeJson()">Convertir desde Json</button><br>
+        <button (click)="ocultarConvertidosDesdeJson()">Ocultar</button>
+        <div *ngIf="mostrarConvertidosDesdeJson">
+            <div *ngFor="let transferencia of transferencias">
+                <p>De: {{ transferencia.remitente }} - Para: {{ transferencia.destinatario }}.</p>
+                <p>Cantidad: {{ transferencia.cantidad }}€.</p>
+                <p>{{ transferencia.fecha }}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

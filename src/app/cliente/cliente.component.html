@@ -1,0 +1,31 @@
+<div>
+    <h2>Lista de Clientes:</h2>
+    <p><a routerLink="/dashboard">Volver.</a></p>
+    <div *ngFor="let cliente of clientes">
+        <p>{{ cliente.nombre }} {{ cliente.apellido }} - Edad: {{ cliente.edad }} años.</p>
+        <ul>
+            <li>Correo: {{ cliente.email }}.</li>
+            <li>Presupuesto: {{ cliente.presupuesto }}€.</li>
+        </ul>
+        <hr>
+    </div>
+
+    <button (click)="convertirClientesAJson()">Convertir a Json</button>
+    <div *ngIf="mostrarConvertidosAJson">
+        <button (click)="ocultarConvertidos()">Ocultar</button>
+        <p>{{ clientesJson }}</p>
+        <button (click)="convertirDesdeJson()">Convertir desde Json</button><br>
+        
+        <button (click)="ocultarConvertidosDesdeJson()">Ocultar</button>
+        <div *ngIf="mostrarConvertidosDesdeJson">
+            <div *ngFor="let cliente of clientes">
+                <p>{{ cliente.nombre }} {{ cliente.apellido }} - Edad: {{ cliente.edad }} años.</p>
+                <ul>
+                    <li>Correo: {{ cliente.email }}.</li>
+                    <li>Presupuesto: {{ cliente.presupuesto }}€.</li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
